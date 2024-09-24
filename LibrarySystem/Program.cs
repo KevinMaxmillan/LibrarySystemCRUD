@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using LibrarySystem.Library.Infrastructure;
+using LibrarySystem.Library.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +12,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<LibraryDbContext>(options =>
+builder.Services.AddDbContext<BooksDbContext>(options =>
 options.UseSqlite(builder.Configuration.GetConnectionString("DbConnectionString")));
+
+builder.Services.AddAppication();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

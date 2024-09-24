@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 namespace LibrarySystem.Library.Infrastructure;
 
 
-public class LibraryDbContext : DbContext
+public class BooksDbContext : DbContext
 {
-    public LibraryDbContext(DbContextOptions options) : base(options)
+    public BooksDbContext(DbContextOptions options) : base(options)
     {
     }
 
