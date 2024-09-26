@@ -15,9 +15,9 @@ public class UpdateBookCommandHandler : IRequestHandler<UpdateBookCommand, Unit>
     {
         var BookUpdate = await _booksDbContext.Books.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
         
-        if (BookUpdate != null)
+        if (BookUpdate is null)
         {
-            throw new Exception();
+            throw new Exception("");
         }
 
         BookUpdate.Title = request.Title;

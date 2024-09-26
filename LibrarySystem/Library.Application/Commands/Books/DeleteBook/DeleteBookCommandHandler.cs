@@ -4,7 +4,7 @@ using MediatR;
 
 namespace LibrarySystem.Library.Application.Commands.Books.DeleteBook;
 
-public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, Unit>
+public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, Unit> 
 {
     private readonly BooksDbContext _booksDbContext;
     public DeleteBookCommandHandler(BooksDbContext booksDbContext)
@@ -13,7 +13,7 @@ public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, Unit>
     }
     public async Task<Unit> Handle(DeleteBookCommand request, CancellationToken cancellationToken)
     {
-        var BookDelete = await _booksDbContext.Books.FirstOrDefaultAsync(x => x.Id == request.id, cancellationToken);
+        var BookDelete = await _booksDbContext.Books.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
         
         if (BookDelete is null) 
         {

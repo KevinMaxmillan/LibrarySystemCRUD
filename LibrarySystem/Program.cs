@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using LibrarySystem.Library.Infrastructure;
 using LibrarySystem.Library.Application;
+using LibrarySystem.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.AddBookEndpoints();
 
 app.UseHttpsRedirection();
 

@@ -1,6 +1,7 @@
 ﻿using LibrarySystem.Library.Contracts.Responses;
 using LibrarySystem.Library.Domain.Entities;
 using Mapster;
+using LibrarySystem.Library.Contracts.Dtos;
 
 namespace LibrarySystem.Library.Application.Mappings;
 
@@ -9,9 +10,10 @@ public class MappingConfig
     public static void Configure()
     {
         TypeAdapterConfig<List<Book>, GetBooksResponse>.NewConfig()
-            .Map(dest => dest.BooksDtos, src => src);
+             .Map(dest => dest.BooksDtos, src => src);
 
-        TypeAdapterConfig<Book, GetBooksByIdResponse>.NewConfig()
-            .Map(dest => dest.BooksDtos, src => src);
+         TypeAdapterConfig<Book, GetBooksByIdResponse>.NewConfig()
+             .Map(dest => dest.BooksDtos, src => src);
+       
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+﻿
 using LibrarySystem.Library.Domain.Entities;
 using LibrarySystem.Library.Infrastructure;
 using MediatR;
@@ -15,18 +15,19 @@ public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, int>
     }
     public async Task<int> Handle(CreateBookCommand request, CancellationToken cancellationToken)
     {
-        var books = new Book
+        var book = new Book
         {
             Title = request.Title,
             Author = request.Author,
-            Description = request.Description
-          
+            Description = request.Description,
+            CreateDate = DateTime.Now.ToUniversalTime()
+
         };
 
-        await _booksDbContext.Books.AddAsync(books, cancellationToken);
-        var id = await _booksDbContext.SaveChangesAsync(cancellationToken);
+        await _booksDbContext.Books.AddAsync(book, cancellationToken);
+        await _booksDbContext.SaveChangesAsync(cancellationToken);
 
-        return id;
+        return book.Id;
     }
 }
 
