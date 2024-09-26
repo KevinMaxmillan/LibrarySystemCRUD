@@ -1,12 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
+	
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>G
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+	
   <ItemGroup>
+    <Compile Remove="Library.Application\Queries\Books\GetBookById\**" />
+    <Content Remove="Library.Application\Queries\Books\GetBookById\**" />
+    <EmbeddedResource Remove="Library.Application\Queries\Books\GetBookById\**" />
+    <None Remove="Library.Application\Queries\Books\GetBookById\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.4.0" />
     <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
@@ -25,10 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Library.Application\Commands\Books\CreateBook\" />
-    <Folder Include="Library.Application\Commands\Books\DeleteBook\" />
-    <Folder Include="Library.Application\Commands\Books\UpdateBook\" />
-    <Folder Include="Library.Application\Queries\Books\GetBookById\" />
     <Folder Include="Library.Contracts\Requests\" />
   </ItemGroup>
 
