@@ -15,6 +15,19 @@
     <None Remove="Library.Application\Queries\Books\GetBookById\**" />
   </ItemGroup>
 
+	
+  <ItemGroup>
+    <None Remove="Client\LibrarySystem\config.ts" />
+    <None Remove="Client\LibrarySystem\src\api\apiconnector.ts" />
+    <None Remove="Client\LibrarySystem\src\components\books\BookForm.tsx" />
+    <None Remove="Client\LibrarySystem\src\components\books\BookTable.tsx" />
+    <None Remove="Client\LibrarySystem\src\components\books\BookTableItem.tsx" />
+    <None Remove="Client\LibrarySystem\src\intercepters\axiosinterceptor.ts" />
+    <None Remove="Client\LibrarySystem\src\models\bookDto.ts" />
+    <None Remove="Client\LibrarySystem\src\models\getBookByIdResponse.ts" />
+    <None Remove="Client\LibrarySystem\src\router\Routes.tsx" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
     <PackageReference Include="Mapster" Version="7.4.0" />
@@ -36,7 +49,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Client\" />
+    <TypeScriptCompile Include="Client\LibrarySystem\config.ts" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\api\apiConnector.ts" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\components\books\BookForm.tsx" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\components\books\BookTable.tsx" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\components\books\BookTableItem.tsx" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\intercepters\axiosInterceptor.ts" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\models\bookDto.ts" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\models\getBookByIdResponse.ts" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\router\Routes.tsx" />
   </ItemGroup>
 
 </Project>

@@ -4,6 +4,7 @@ using LibrarySystem.Library.Infrastructure;
 using LibrarySystem.Library.Application;
 using LibrarySystem.Modules;
 using LibrarySystem.Handlers;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BooksDbContext>(options =>
 options.UseSqlite(builder.Configuration.GetConnectionString("DbConnectionString")));
 
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", policyBuilder =>
+    policyBuilder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:5174/"));
+});
+
 builder.Services.AddAppication();
 builder.Services.AddExceptionHandler<ExceptionHandler>();
 var app = builder.Build();
@@ -29,6 +36,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseExceptionHandler(_ => { });
+
+app.UseCors("CorsPolicy");
 
 app.AddBookEndpoints();
 
