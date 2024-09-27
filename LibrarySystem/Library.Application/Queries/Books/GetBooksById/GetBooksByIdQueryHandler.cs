@@ -1,4 +1,6 @@
-﻿using LibrarySystem.Library.Contracts.Responses;
+﻿using LibrarySystem.Library.Contracts.Exceptions;
+using LibrarySystem.Library.Contracts.Responses;
+using LibrarySystem.Library.Domain.Entities;
 using LibrarySystem.Library.Infrastructure;
 using Mapster;
 using MediatR;
@@ -20,7 +22,7 @@ public class GetBooksByIdQueryHandler : IRequestHandler<GetBooksByIdQuery, GetBo
 
         if (Books == null) 
         {
-            throw new Exception();
+            throw new NotFoundExceptions($"{nameof(Book)} with {nameof(Book.Id)}: {request.Id}" + $"was not found in the Library");
         }
 
 

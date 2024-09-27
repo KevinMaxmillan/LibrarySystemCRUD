@@ -1,4 +1,6 @@
-﻿using LibrarySystem.Library.Infrastructure;
+﻿using LibrarySystem.Library.Contracts.Exceptions;
+using LibrarySystem.Library.Domain.Entities;
+using LibrarySystem.Library.Infrastructure;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +19,7 @@ public class UpdateBookCommandHandler : IRequestHandler<UpdateBookCommand, Unit>
         
         if (BookUpdate is null)
         {
-            throw new Exception("");
+            throw new NotFoundExceptions($"{nameof(Book)} with {nameof(Book.Id)}: {request.Id}" + $"was not found in the Library");
         }
 
         BookUpdate.Title = request.Title;

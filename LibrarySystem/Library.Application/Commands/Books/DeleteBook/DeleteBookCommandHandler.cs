@@ -1,4 +1,6 @@
 ﻿using System.Data.Entity;
+using LibrarySystem.Library.Contracts.Exceptions;
+using LibrarySystem.Library.Domain.Entities;
 using LibrarySystem.Library.Infrastructure;
 using MediatR;
 
@@ -17,7 +19,7 @@ public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, Unit>
         
         if (BookDelete is null) 
         {
-            throw new Exception();
+            throw new NotFoundExceptions($"{nameof(Book)} with {nameof(Book.Id)}: {request.Id}" + $"was not found in the Library");
         }
 
         _booksDbContext.Books.Remove(BookDelete);
