@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibrarySystem.Library.Infrastructure;
 
-
-public class LibraryDbContext : DbContext
+// DbContext class to interact with the database for the Book entity
+public class BooksDbContext : DbContext
 {
-    public LibraryDbContext(DbContextOptions options) : base(options)
+    public BooksDbContext(DbContextOptions options) : base(options)
     {
     }
 

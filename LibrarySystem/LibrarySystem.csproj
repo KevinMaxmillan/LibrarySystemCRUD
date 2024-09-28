@@ -1,12 +1,37 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
+	
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+	
   <ItemGroup>
+    <Compile Remove="Library.Application\Queries\Books\GetBookById\**" />
+    <Content Remove="Library.Application\Queries\Books\GetBookById\**" />
+    <EmbeddedResource Remove="Library.Application\Queries\Books\GetBookById\**" />
+    <None Remove="Library.Application\Queries\Books\GetBookById\**" />
+  </ItemGroup>
+
+	
+  <ItemGroup>
+    <None Remove="Client\LibrarySystem\config.ts" />
+    <None Remove="Client\LibrarySystem\src\api\apiconnector.ts" />
+    <None Remove="Client\LibrarySystem\src\components\books\BookForm.tsx" />
+    <None Remove="Client\LibrarySystem\src\components\books\BookTable.tsx" />
+    <None Remove="Client\LibrarySystem\src\components\books\BookTableItem.tsx" />
+    <None Remove="Client\LibrarySystem\src\models\bookDto.ts" />
+    <None Remove="Client\LibrarySystem\src\models\getBookByIdResponse.ts" />
+    <None Remove="Client\LibrarySystem\src\router\Routes.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
       <PrivateAssets>all</PrivateAssets>
@@ -19,11 +44,18 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Library.Contracts\" />
-    <Folder Include="Library.Application\" />
+    <TypeScriptCompile Include="Client\LibrarySystem\config.ts" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\api\apiConnector.ts" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\components\books\BookForm.tsx" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\components\books\BookTable.tsx" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\components\books\BookTableItem.tsx" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\models\bookDto.ts" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\models\getBookByIdResponse.ts" />
+    <TypeScriptCompile Include="Client\LibrarySystem\src\router\Routes.tsx" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,10 @@
 
 using Microsoft.EntityFrameworkCore;
 using LibrarySystem.Library.Infrastructure;
+using LibrarySystem.Library.Application;
+using LibrarySystem.Modules;
+using LibrarySystem.Handlers;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +15,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<LibraryDbContext>(options =>
+builder.Services.AddDbContext<BooksDbContext>(options =>
 options.UseSqlite(builder.Configuration.GetConnectionString("DbConnectionString")));
+
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", policyBuilder =>
+    policyBuilder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:5173"));
+});
+
+builder.Services.AddAppication();
+builder.Services.AddExceptionHandler<ExceptionHandler>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,6 +34,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseExceptionHandler(_ => { });
+
+app.UseCors("CorsPolicy");
+
+app.AddBookEndpoints();
 
 app.UseHttpsRedirection();
 
