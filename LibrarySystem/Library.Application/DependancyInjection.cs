@@ -6,11 +6,14 @@ using Mapster;
 using Microsoft.Extensions.DependencyInjection;
 namespace LibrarySystem.Library.Application;
 
+
+// Static class for configuring dependency injection for the application
 public static class DependancyInjection
 {
 
     public static IServiceCollection AddAppication(this IServiceCollection services)
     {
+        // Register MediatR services
 
         services.AddMediatR(cf =>
         {
@@ -19,6 +22,8 @@ public static class DependancyInjection
             cf.AddOpenBehavior(typeof(ValidationBehaviors<,>));
         
         });
+
+        // Configure mapping settings
         MappingConfig.Configure();
         var config = TypeAdapterConfig.GlobalSettings;
         config.Scan(Assembly.GetExecutingAssembly());

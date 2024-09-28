@@ -14,13 +14,13 @@ export default function BookTableItem({ book }: Props) {
             <tr className="center aligned">
                 <td data-label="Id">{book.id}</td>
                 <td data-label="Title">{book.title}</td>
-                <td data-label="Category">{book.author}</td>
+                <td data-label="Author">{book.author}</td>
                 <td data-label="Description">{book.description}</td>
                 <td data-label="CreateDate">{book.createDate}</td>
                 
                 <td data-label="Action">
                     
-                    <NavLink to={`/editMovie/${book.id}`} className="btn btn-warning">
+                    <NavLink to={`/editBook/${book.id}`} className="btn btn-warning">
                         Edit
                     </NavLink>
 

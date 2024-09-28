@@ -6,17 +6,21 @@ import { NavLink } from "react-router-dom";
 
 export default function BookTable() {
 
+
+    // State variable to hold the list of books
     const [books, SetBooks] = useState < BookDto [] > ([]);
 
+    // useEffect hook to fetch data
     useEffect(() => {
         const fetchData = async () => {
+            // Fetch books from the API
             const fetchBooks = await apiConnector.getBooks();
             SetBooks(fetchBooks);
         }
 
         fetchData();
 
-    }, []);
+    }, []);// Empty dependency array
 
     return (
         <>
@@ -41,7 +45,7 @@ export default function BookTable() {
                     </tbody>
                 </table>
 
-                {/*<button as={NavLink} to="createBook" type="button" className="btn btn-success float-right">Add New Book</button>*/}
+               
 
                 <NavLink to="/createBook" className="btn btn-success float-right">
                     Add New Book

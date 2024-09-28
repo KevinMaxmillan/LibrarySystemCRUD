@@ -21,7 +21,7 @@ options.UseSqlite(builder.Configuration.GetConnectionString("DbConnectionString"
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("CorsPolicy", policyBuilder =>
-    policyBuilder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:5174/"));
+    policyBuilder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:5173"));
 });
 
 builder.Services.AddAppication();

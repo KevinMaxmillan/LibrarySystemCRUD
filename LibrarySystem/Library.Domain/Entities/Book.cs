@@ -1,5 +1,6 @@
 ﻿namespace LibrarySystem.Library.Domain.Entities
 {
+    //book entity in the library system
     public class Book : BaseEntity
     {
         public required String Title { get; set; }

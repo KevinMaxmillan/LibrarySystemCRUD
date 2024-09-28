@@ -22,7 +22,6 @@
     <None Remove="Client\LibrarySystem\src\components\books\BookForm.tsx" />
     <None Remove="Client\LibrarySystem\src\components\books\BookTable.tsx" />
     <None Remove="Client\LibrarySystem\src\components\books\BookTableItem.tsx" />
-    <None Remove="Client\LibrarySystem\src\intercepters\axiosinterceptor.ts" />
     <None Remove="Client\LibrarySystem\src\models\bookDto.ts" />
     <None Remove="Client\LibrarySystem\src\models\getBookByIdResponse.ts" />
     <None Remove="Client\LibrarySystem\src\router\Routes.tsx" />
@@ -54,7 +53,6 @@
     <TypeScriptCompile Include="Client\LibrarySystem\src\components\books\BookForm.tsx" />
     <TypeScriptCompile Include="Client\LibrarySystem\src\components\books\BookTable.tsx" />
     <TypeScriptCompile Include="Client\LibrarySystem\src\components\books\BookTableItem.tsx" />
-    <TypeScriptCompile Include="Client\LibrarySystem\src\intercepters\axiosInterceptor.ts" />
     <TypeScriptCompile Include="Client\LibrarySystem\src\models\bookDto.ts" />
     <TypeScriptCompile Include="Client\LibrarySystem\src\models\getBookByIdResponse.ts" />
     <TypeScriptCompile Include="Client\LibrarySystem\src\router\Routes.tsx" />

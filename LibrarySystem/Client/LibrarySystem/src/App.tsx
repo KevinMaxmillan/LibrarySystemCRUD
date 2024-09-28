@@ -5,6 +5,7 @@ import BookTable from './components/books/BookTable'
 
 function App() {
 
+    // Getting the current location
     const location = useLocation();
 
   return (

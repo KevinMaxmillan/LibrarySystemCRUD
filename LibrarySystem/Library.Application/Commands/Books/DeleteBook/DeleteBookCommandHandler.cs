@@ -9,10 +9,14 @@ namespace LibrarySystem.Library.Application.Commands.Books.DeleteBook;
 public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, Unit> 
 {
     private readonly BooksDbContext _booksDbContext;
+
+    //constructor
     public DeleteBookCommandHandler(BooksDbContext booksDbContext)
     {
         _booksDbContext = booksDbContext;
     }
+
+    //handles the command of deleting a book from the database
     public async Task<Unit> Handle(DeleteBookCommand request, CancellationToken cancellationToken)
     {
         var BookDelete = await _booksDbContext.Books.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);

@@ -8,11 +8,15 @@ namespace LibrarySystem.Library.Application.Commands.Books.UpdateBook;
 
 public class UpdateBookCommandHandler : IRequestHandler<UpdateBookCommand, Unit>
 {
-    private readonly BooksDbContext _booksDbContext;    
+    private readonly BooksDbContext _booksDbContext; 
+    
+    //constructor
     public UpdateBookCommandHandler(BooksDbContext booksDbContext)
     {
         _booksDbContext = booksDbContext;
     }
+
+    //handles the update command of a book from the database
     public async Task<Unit> Handle(UpdateBookCommand request, CancellationToken cancellationToken)
     {
         var BookUpdate = await _booksDbContext.Books.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);

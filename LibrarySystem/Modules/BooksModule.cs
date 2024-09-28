@@ -8,15 +8,21 @@ using MediatR;
 
 namespace LibrarySystem.Modules;
 
+
+// Static class for defining API endpoints related to books
 public static class BooksModule
 {
     public static void AddBookEndpoints(this IEndpointRouteBuilder app) 
     {
+
+        // Endpoint to get a list of all books
         app.MapGet("/api/books", async (IMediator mediator, CancellationToken ct) =>
         {
             var books = await mediator.Send(new GetBooksQuery(), ct);
             return Results.Ok(books);
         }).WithTags("Books");
+
+        // Endpoint to get a specific book by Id
 
         app.MapGet("/api/books/{Id}", async (IMediator mediator, int Id, CancellationToken ct) =>
         {
@@ -24,6 +30,8 @@ public static class BooksModule
             return Results.Ok(books);
         }).WithTags("Books");
 
+
+        // Endpoint to create a new book
         app.MapPost("/api/books", async (IMediator mediator,CreateBookRequest createBookrequest, CancellationToken ct) =>
         {
             var command = new CreateBookCommand(createBookrequest.Title, createBookrequest.Author, createBookrequest.Description); 
@@ -31,6 +39,7 @@ public static class BooksModule
             return Results.Ok(result);
         }).WithTags("Books");
 
+        // Endpoint to update an existing book by Id
         app.MapPut("/api/books/{Id}", async (IMediator mediator, int Id,UpdateBookRequest updateBookrequest, CancellationToken ct) =>
         {
             var command = new UpdateBookCommand(Id, updateBookrequest.Title, updateBookrequest.Author, updateBookrequest.Description);
@@ -38,6 +47,7 @@ public static class BooksModule
             return Results.Ok(result);
         }).WithTags("Books");
 
+        // Endpoint to delete a book by Id
         app.MapDelete("/api/books/{Id}", async (IMediator mediator, int Id, CancellationToken ct) =>
         {
             var command = new DeleteBookCommand(Id);

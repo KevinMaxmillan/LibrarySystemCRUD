@@ -4,6 +4,8 @@ using LibrarySystem.Library.Domain.Entities;
 
 public class CreateBookValidator : AbstractValidator<CreateBookCommand>
 {
+
+    //validation of the creation of the books
     public CreateBookValidator()
     {
         RuleFor(x => x.Title)

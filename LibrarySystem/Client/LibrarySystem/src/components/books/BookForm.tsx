@@ -8,6 +8,7 @@ export default function BookForm() {
     const {id} = useParams();
     const navigate = useNavigate();
 
+    //variable to hold book data
     const [book, setBook] = useState<BookDto>({
         id: undefined,
         title: '',
@@ -16,12 +17,15 @@ export default function BookForm() {
         createDate: undefined
     }); 
 
+    // useEffect hook to fetch the book details
     useEffect(() => {
         if (id) {
             apiConnector.getBookById(id).then(book => setBook(book!))
         }
     }, [id]);
 
+
+    // Function to handle form submission
     function handleSubmit() {
         if (!book.id) {
             apiConnector.createBook(book).then(() => navigate('/'));

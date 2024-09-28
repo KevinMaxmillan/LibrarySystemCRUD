@@ -4,6 +4,8 @@ using LibrarySystem.Library.Application.Commands.Books.CreateBook;
 using LibrarySystem.Library.Domain.Entities;
 public class UpdateBookValidator : AbstractValidator<UpdateBookCommand>
 {
+
+    //validation at update book
     public UpdateBookValidator()
     {
 
